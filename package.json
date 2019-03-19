@@ -5,9 +5,12 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:ci": "jest --runInBand",
+    "test:coverage": "jest --coverage"
   },
   "private": true,
   "dependencies": {
@@ -29,12 +32,15 @@
     "@angular/cli": "~7.3.5",
     "@angular/compiler-cli": "~7.2.0",
     "@angular/language-service": "~7.2.0",
-    "@types/node": "~8.9.4",
+    "@angular/material": "^7.3.4",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "~8.9.4",
     "codelyzer": "~4.5.0",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
+    "jest": "^24.5.0",
+    "jest-preset-angular": "^7.0.1",
     "karma": "~4.0.0",
     "karma-chrome-launcher": "~2.2.0",
     "karma-coverage-istanbul-reporter": "~2.0.1",
@@ -43,6 +49,32 @@
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
-    "typescript": "~3.2.2"
+    "typescript": "~3.2.2",
+    "bootstrap": "^4.3.1"
+  },
+  "engines": {
+    "node": "8.x.x"
+  },
+  "jest": {
+    "testURL": "http://localhost",
+    "preset": "jest-preset-angular",
+    "setupTestFrameworkScriptFile": "<rootDir>/src/setupJest.ts",
+    "coverageThreshold": {
+      "global": {
+        "statements": 50,
+        "branches": 50,
+        "functions": 50
+      }
+    },
+    "testPathIgnorePatterns": [
+      "<rootDir>/src/setupJest.ts",
+      "<rootDir>/src/jestGlobalMocks.ts",
+      "<rootDir>/node_modules"
+    ],
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/src/setupJest.ts",
+      "<rootDir>/src/jestGlobalMocks.ts",
+      "<rootDir>/node_modules"
+    ]
   }
 }
